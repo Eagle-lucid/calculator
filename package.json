@@ -1,0 +1,19 @@
+{
+  "name": "lucid-calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+      "test": "jest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+      "jest": "^<version>"
+  },
+  "jest": {
+      "testMatch": [
+          "**/?(*.)+(spec|test).[jt]s?(x)"
+      ]
+  }
+}
+
