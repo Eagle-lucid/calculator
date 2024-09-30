@@ -25,7 +25,7 @@ body {
     max-width: 320px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 35px rgb(190, 24, 24);
+    box-shadow: 0 0 35px rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
 }
 /* Container for the light theme and style for the toggle*/
