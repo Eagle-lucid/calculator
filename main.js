@@ -38,13 +38,15 @@ buttons.forEach(button => {
             display.textContent = currentInput;
         }  
          // Handle operators
-         else if(['+', '-', '*', '/'].includes(value)) {
-            if(currentInput) {
-                previousInput = currentInput;
-                currentInput = '';
-            }
-            operator = value;
-            display.textContent = operator;
+         else if(['+', '-', '*', '/', 'openBracket', 'closeBracket'].includes(value)) {
+           if(value === 'openBracket') {
+            currentInput += '(';
+           } else if(value === 'closeBracket') {
+            currentInput += ')';
+           } else {
+             currentInput += value;
+           }
+           display.textContent =  currentInput
          }
 
          //handle the 'C' button clear
@@ -59,20 +61,17 @@ buttons.forEach(button => {
             currentInput = currentInput.slice(0, -1);
             display.textContent = currentInput || '0';
          }
-          //  handle the parentheses ()
-          else if(value === 'openBracket' || value === 'closeBracket') {
-            currentInput += value  === 'openBracket' ? '(' : ')';
-            display.textContent = currentInput;
-          }
           //handle the equal button (=)
           else if(value === 'equal') {
-            if(currentInput && previousInput && operator) {
-                let result = eval(`${previousInput} ${operator} ${currentInput}`);
-                display.textContent = result;
-                currentInput = result;
-                previousInput = '';
-                resultDisplayed = true;
-            }
+           try {
+            let result = eval(currentInput);
+            display.textContent = result;
+            currentInput = result.toString();
+            resultDisplayed = true;
+           } catch (error) {
+              display.textContent = 'Error';
+              currentInput = '';
+           }
           }
     });
 });
