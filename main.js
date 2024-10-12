@@ -39,6 +39,9 @@ buttons.forEach(button => {
         }  
          // Handle operators
          else if(['+', '-', '*', '/', 'openBracket', 'closeBracket'].includes(value)) {
+            if (resultDisplayed && !isNaN(currentInput)) {
+                resultDisplayed = false;
+            }
            if(value === 'openBracket') {
             currentInput += '(';
            } else if(value === 'closeBracket') {
